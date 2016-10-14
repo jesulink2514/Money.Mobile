@@ -13,7 +13,7 @@ namespace ExpensesPredictor.Mobile
         {
             InitializeComponent();
 
-            MainPage = new ExpensesPredictor.Mobile.MainPage();
+            MainPage = new NavigationPage(new ExpensesPredictor.Mobile.MainPage());
         }
 
         protected override void OnStart()
