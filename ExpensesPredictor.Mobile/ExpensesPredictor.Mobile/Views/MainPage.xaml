@@ -5,14 +5,12 @@
              x:Class="ExpensesPredictor.Mobile.MainPage"
              Title="Expenses Predictor">
 <ContentPage.ToolbarItems>
-  <!--<ToolbarItem  Text="New Expense" AutomationId="NewExpense"
-                Icon="NewExpensive.png"/>-->
+  <ToolbarItem  Text="New Expense" AutomationId="NewExpense"
+                Icon="NewExpensive.png"/>
 </ContentPage.ToolbarItems>
   <StackLayout 
     VerticalOptions="FillAndExpand" 
     HorizontalOptions="FillAndExpand">
-    <Label Text="Welcome to Xamarin Forms!"
-           HorizontalOptions="Center" />
-
+    
   </StackLayout>
 </ContentPage>
