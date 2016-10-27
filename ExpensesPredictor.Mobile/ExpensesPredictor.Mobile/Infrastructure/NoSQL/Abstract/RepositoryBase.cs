@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using MarcelloDB.Collections;
+using Xamarin.Forms;
 
 namespace ExpensesPredictor.Mobile.Infrastructure.NoSQL.Abstract
 {
-    public abstract class RepositoryBase<T, TKey>
+    public abstract class RepositoryBase<T, TKey> : IRepository<T, TKey>
     {
         private readonly MarcelloDB.Session _session;
         private readonly Collection<T, TKey> _collection;
@@ -13,6 +14,12 @@ namespace ExpensesPredictor.Mobile.Infrastructure.NoSQL.Abstract
         protected RepositoryBase(IPlatformFactory platformFactory)
         {
             _session = platformFactory.GetSession();
+            _collection = GetCollection();
+        }
+
+        protected RepositoryBase()
+        {
+            _session = DependencyService.Get<IPlatformFactory>().GetSession();
             _collection = GetCollection();
         }
 
@@ -31,6 +38,11 @@ namespace ExpensesPredictor.Mobile.Infrastructure.NoSQL.Abstract
         }
 
         public List<T> GetAll()
+        {
+            return _collection.All.ToList();
+        }
+
+        public List<T> FindAll()
         {
             return _collection.All.ToList();
         }
