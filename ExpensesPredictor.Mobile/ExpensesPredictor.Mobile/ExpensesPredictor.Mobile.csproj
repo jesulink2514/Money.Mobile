@@ -38,11 +38,19 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Behaviors\Abstract\ValidationBehavior.cs" />
+    <Compile Include="Behaviors\RequiredBehavior.cs" />
     <Compile Include="Infrastructure\NoSQL\Abstract\IPlatformFactory.cs" />
+    <Compile Include="Infrastructure\NoSQL\Abstract\IRepository.cs" />
     <Compile Include="Infrastructure\NoSQL\Abstract\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\NoSQL\ExpensesRepository.cs" />
+    <Compile Include="Infrastructure\NoSQL\IExpensesRepository.cs" />
     <Compile Include="Models\BindableBase.cs" />
     <Compile Include="Models\Expense.cs" />
     <Compile Include="Models\ExpenseFrecuency.cs" />
+    <Compile Include="ViewModels\Abstract\ViewModelBase.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\Abstract\ViewBase.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -58,9 +66,7 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Reference Include="MarcelloDB, Version=0.6.0.29135, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MarcelloDB.0.6.0\lib\portable-net45+win+wp80+MonoTouch10+MonoAndroid10+xamarinmac20+xamarinios10\MarcelloDB.dll</HintPath>
