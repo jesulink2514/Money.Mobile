@@ -1,10 +1,10 @@
 ﻿using ExpensesPredictor.Mobile.Views.Abstract;
 
-namespace ExpensesPredictor.Mobile
+namespace ExpensesPredictor.Mobile.Views
 {
-    public partial class MainPage : ViewBase
+    public partial class AddEditView : ViewBase
     {
-        public MainPage()
+        public AddEditView()
         {
             InitializeComponent();
         }

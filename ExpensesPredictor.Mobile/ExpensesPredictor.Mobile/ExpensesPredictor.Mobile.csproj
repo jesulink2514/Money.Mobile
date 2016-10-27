@@ -40,6 +40,7 @@
     </Compile>
     <Compile Include="Behaviors\Abstract\ValidationBehavior.cs" />
     <Compile Include="Behaviors\RequiredBehavior.cs" />
+    <Compile Include="Converters\NegatedBoolConverter.cs" />
     <Compile Include="Infrastructure\NoSQL\Abstract\IPlatformFactory.cs" />
     <Compile Include="Infrastructure\NoSQL\Abstract\IRepository.cs" />
     <Compile Include="Infrastructure\NoSQL\Abstract\RepositoryBase.cs" />
