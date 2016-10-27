@@ -39,8 +39,12 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Behaviors\Abstract\ValidationBehavior.cs" />
+    <Compile Include="Behaviors\AmountValidatorBehavior.cs" />
     <Compile Include="Behaviors\RequiredBehavior.cs" />
+    <Compile Include="Converters\BoolToStyleConverter.cs" />
+    <Compile Include="Converters\BoolToTextConverter.cs" />
     <Compile Include="Converters\NegatedBoolConverter.cs" />
+    <Compile Include="Effects\NumericInputKeyboardEffect.cs" />
     <Compile Include="Infrastructure\NoSQL\Abstract\IPlatformFactory.cs" />
     <Compile Include="Infrastructure\NoSQL\Abstract\IRepository.cs" />
     <Compile Include="Infrastructure\NoSQL\Abstract\RepositoryBase.cs" />
@@ -50,8 +54,12 @@
     <Compile Include="Models\Expense.cs" />
     <Compile Include="Models\ExpenseFrecuency.cs" />
     <Compile Include="ViewModels\Abstract\ViewModelBase.cs" />
+    <Compile Include="ViewModels\AddEditViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\Abstract\ViewBase.cs" />
+    <Compile Include="Views\AddEditView.xaml.cs">
+      <DependentUpon>AddEditView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -67,7 +75,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AddEditView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="MarcelloDB, Version=0.6.0.29135, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MarcelloDB.0.6.0\lib\portable-net45+win+wp80+MonoTouch10+MonoAndroid10+xamarinmac20+xamarinios10\MarcelloDB.dll</HintPath>

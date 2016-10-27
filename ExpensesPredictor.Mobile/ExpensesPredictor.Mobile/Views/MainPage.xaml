@@ -11,7 +11,7 @@
   </ContentPage.BindingContext>
 <ContentPage.ToolbarItems>
   <ToolbarItem  Text="New Expense" AutomationId="NewExpense"
-                Icon="NewExpensive.png"/>
+                Icon="NewExpensive.png" Command="{Binding AddExpenseCommand}"/>
 </ContentPage.ToolbarItems>
   <Grid 
     VerticalOptions="FillAndExpand" 
@@ -23,6 +23,6 @@
     <ListView IsVisible="{Binding AnyExpense}"></ListView>
     <Label Grid.Row="1" IsVisible="{Binding AnyExpense,Converter={StaticResource NegatedBoolConverter}}"
            Text="There is no expenses registered."
-            HorizontalTextAlignment="Center" FontSize="Huge" FontAttributes="Bold"/>
+            HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
 </Grid>
 </abstract:ViewBase>

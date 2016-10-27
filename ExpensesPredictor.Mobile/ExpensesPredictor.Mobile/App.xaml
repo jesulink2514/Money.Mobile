@@ -6,6 +6,12 @@
   <Application.Resources>
 <ResourceDictionary>
   <converters:NegatedBoolConverter x:Key="NegatedBoolConverter" />
+  <Style x:Key="NormalLabelStyle" TargetType="Label">
+    <Setter Property="FontAttributes" Value="Bold"/>
+  </Style>
+  <Style x:Key="ErrorLabelStyle" TargetType="Label" BaseResourceKey="NormalLabelStyle">
+    <Setter Property="TextColor" Value="Red"/>
+  </Style>
 </ResourceDictionary>
   </Application.Resources>
 </Application>

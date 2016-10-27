@@ -1,8 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 using ExpensesPredictor.Mobile.Infrastructure.NoSQL;
 using ExpensesPredictor.Mobile.Models;
 using ExpensesPredictor.Mobile.ViewModels.Abstract;
+using ExpensesPredictor.Mobile.Views;
+using Xamarin.Forms;
 
 namespace ExpensesPredictor.Mobile.ViewModels
 {
@@ -36,5 +39,10 @@ namespace ExpensesPredictor.Mobile.ViewModels
             }
         }
         public bool AnyExpense => Expenses.Any();
+
+        public ICommand AddExpenseCommand { get; } = new Command(async() =>
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new AddEditView());
+        });
     }
 }

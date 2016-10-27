@@ -2,6 +2,57 @@
 <abstract:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:abstract="clr-namespace:ExpensesPredictor.Mobile.Views.Abstract;assembly=ExpensesPredictor.Mobile"
+             xmlns:converters="clr-namespace:ExpensesPredictor.Mobile.Converters;assembly=ExpensesPredictor.Mobile"
+             xmlns:viewModels="clr-namespace:ExpensesPredictor.Mobile.ViewModels;assembly=ExpensesPredictor.Mobile"
+             xmlns:behaviors="clr-namespace:ExpensesPredictor.Mobile.Behaviors;assembly=ExpensesPredictor.Mobile"
+             xmlns:effects="clr-namespace:ExpensesPredictor.Mobile.Effects;assembly=ExpensesPredictor.Mobile"
              x:Class="ExpensesPredictor.Mobile.Views.AddEditView">
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+  <ContentPage.BindingContext>
+    <viewModels:AddEditViewModel />
+  </ContentPage.BindingContext>
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:BoolToTextConverter x:Key="RequiredConverter"
+                                      TrueText=""
+                                      FalseText="This field is required."/>
+      <converters:BoolToTextConverter x:Key="AmountConverter"
+                                TrueText=""
+                                FalseText="This field requires a positive numeric value."/>
+      <converters:BoolToStyleConverter x:Key="ValidToStyleConverter"
+                                       TrueStyle="{StaticResource NormalLabelStyle}"
+                                       FalseStyle="{StaticResource ErrorLabelStyle}"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <StackLayout>
+    <Label Text="Title:" />
+    <Entry Placeholder="Enter the title" Text="{Binding Title}">
+      <Entry.Behaviors>
+        <behaviors:RequiredBehavior x:Name="TitleValidator"/>
+      </Entry.Behaviors>
+    </Entry>
+    <Label Text="{Binding Source={x:Reference TitleValidator},Path=IsValid,Converter={StaticResource RequiredConverter}}"
+           Style="{Binding Source={x:Reference TitleValidator},Path=IsValid,Converter={StaticResource ValidToStyleConverter}}"
+           IsVisible="{Binding  Source={x:Reference TitleValidator},Path=IsValid,Converter={StaticResource NegatedBoolConverter}}"/>
+
+    <Label Text="Description:" />
+    <Entry Placeholder="Enter the description" Text="{Binding Description}" />
+
+    <Label Text="Amount:" />
+    <Entry Placeholder="Enter the amount" Text="{Binding Amount}">
+      <Entry.Behaviors>
+        <behaviors:RequiredBehavior x:Name="AmountRequiredValidator"/>
+        <behaviors:AmountValidatorBehavior x:Name="AmountValidator"/>
+      </Entry.Behaviors>
+      <Entry.Effects>
+        <effects:NumericInputKeyboardEffect />
+      </Entry.Effects>
+    </Entry>
+    <Label Text="{Binding Source={x:Reference AmountValidator},Path=IsValid,Converter={StaticResource AmountConverter}}"
+           Style="{Binding Source={x:Reference AmountValidator},Path=IsValid,Converter={StaticResource ValidToStyleConverter}}"
+           IsVisible="{Binding Source={x:Reference AmountValidator},Path=IsValid,Converter={StaticResource NegatedBoolConverter}}"/>
+    <Label Text="{Binding Source={x:Reference AmountRequiredValidator},Path=IsValid,Converter={StaticResource RequiredConverter}}"
+           Style="{Binding Source={x:Reference AmountRequiredValidator},Path=IsValid,Converter={StaticResource ValidToStyleConverter}}"/>
+    
+    <Button Text="Register"/>
+  </StackLayout>
 </abstract:ViewBase>
