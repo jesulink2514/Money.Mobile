@@ -45,6 +45,7 @@
     <Compile Include="Converters\BoolToTextConverter.cs" />
     <Compile Include="Converters\NegatedBoolConverter.cs" />
     <Compile Include="Effects\NumericInputKeyboardEffect.cs" />
+    <Compile Include="Infrastructure\Commands\RelayCommand.cs" />
     <Compile Include="Infrastructure\NoSQL\Abstract\IPlatformFactory.cs" />
     <Compile Include="Infrastructure\NoSQL\Abstract\IRepository.cs" />
     <Compile Include="Infrastructure\NoSQL\Abstract\RepositoryBase.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Models\BindableBase.cs" />
     <Compile Include="Models\Expense.cs" />
     <Compile Include="Models\ExpenseFrecuency.cs" />
+    <Compile Include="Models\ValidableBindableBase.cs" />
     <Compile Include="ViewModels\Abstract\ViewModelBase.cs" />
     <Compile Include="ViewModels\AddEditViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

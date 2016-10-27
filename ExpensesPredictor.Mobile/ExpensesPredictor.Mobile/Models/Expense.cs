@@ -2,7 +2,7 @@
 
 namespace ExpensesPredictor.Mobile.Models
 {
-    public class Expense:BindableBase
+    public class Expense: ValidableBindableBase
     {
         private string _title;
         private string _description;
@@ -32,6 +32,17 @@ namespace ExpensesPredictor.Mobile.Models
         {
             get { return _frecuency; }
             set {SetProperty(ref _frecuency,value); }
+        }
+
+        public override bool IsValid
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(Title)) return false;
+
+                if (Amount <= 0) return false;
+                return true;
+            }
         }
     }
 }

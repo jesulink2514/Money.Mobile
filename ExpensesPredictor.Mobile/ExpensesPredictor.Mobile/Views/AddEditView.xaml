@@ -3,13 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:abstract="clr-namespace:ExpensesPredictor.Mobile.Views.Abstract;assembly=ExpensesPredictor.Mobile"
              xmlns:converters="clr-namespace:ExpensesPredictor.Mobile.Converters;assembly=ExpensesPredictor.Mobile"
-             xmlns:viewModels="clr-namespace:ExpensesPredictor.Mobile.ViewModels;assembly=ExpensesPredictor.Mobile"
              xmlns:behaviors="clr-namespace:ExpensesPredictor.Mobile.Behaviors;assembly=ExpensesPredictor.Mobile"
              xmlns:effects="clr-namespace:ExpensesPredictor.Mobile.Effects;assembly=ExpensesPredictor.Mobile"
              x:Class="ExpensesPredictor.Mobile.Views.AddEditView">
-  <ContentPage.BindingContext>
-    <viewModels:AddEditViewModel />
-  </ContentPage.BindingContext>
   <ContentPage.Resources>
     <ResourceDictionary>
       <converters:BoolToTextConverter x:Key="RequiredConverter"
@@ -25,7 +21,7 @@
   </ContentPage.Resources>
   <StackLayout>
     <Label Text="Title:" />
-    <Entry Placeholder="Enter the title" Text="{Binding Title}">
+    <Entry Placeholder="Enter the title" Text="{Binding Expense.Title}">
       <Entry.Behaviors>
         <behaviors:RequiredBehavior x:Name="TitleValidator"/>
       </Entry.Behaviors>
@@ -35,10 +31,10 @@
            IsVisible="{Binding  Source={x:Reference TitleValidator},Path=IsValid,Converter={StaticResource NegatedBoolConverter}}"/>
 
     <Label Text="Description:" />
-    <Entry Placeholder="Enter the description" Text="{Binding Description}" />
+    <Entry Placeholder="Enter the description" Text="{Binding Expense.Description}" />
 
     <Label Text="Amount:" />
-    <Entry Placeholder="Enter the amount" Text="{Binding Amount}">
+    <Entry Placeholder="Enter the amount" Text="{Binding Expense.Amount}">
       <Entry.Behaviors>
         <behaviors:RequiredBehavior x:Name="AmountRequiredValidator"/>
         <behaviors:AmountValidatorBehavior x:Name="AmountValidator"/>
@@ -53,6 +49,7 @@
     <Label Text="{Binding Source={x:Reference AmountRequiredValidator},Path=IsValid,Converter={StaticResource RequiredConverter}}"
            Style="{Binding Source={x:Reference AmountRequiredValidator},Path=IsValid,Converter={StaticResource ValidToStyleConverter}}"/>
     
-    <Button Text="Register"/>
+    <Button Text="Register" Command="{Binding RegisterCommand}"
+            CommandParameter="{Binding Expense}"/>
   </StackLayout>
 </abstract:ViewBase>

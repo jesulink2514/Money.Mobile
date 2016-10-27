@@ -68,6 +68,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="AddEditViewModelTest.cs" />
     <Compile Include="ExpensesTest.cs" />
     <Compile Include="MainViewModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
