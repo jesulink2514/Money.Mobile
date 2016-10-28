@@ -5,7 +5,9 @@
              xmlns:converters="clr-namespace:ExpensesPredictor.Mobile.Converters;assembly=ExpensesPredictor.Mobile"
              xmlns:behaviors="clr-namespace:ExpensesPredictor.Mobile.Behaviors;assembly=ExpensesPredictor.Mobile"
              xmlns:effects="clr-namespace:ExpensesPredictor.Mobile.Effects;assembly=ExpensesPredictor.Mobile"
-             x:Class="ExpensesPredictor.Mobile.Views.AddEditView">
+             xmlns:controls="clr-namespace:ExpensesPredictor.Mobile.Controls;assembly=ExpensesPredictor.Mobile"
+             x:Class="ExpensesPredictor.Mobile.Views.AddEditView"
+             Title="{Binding Title}">
   <ContentPage.Resources>
     <ResourceDictionary>
       <converters:BoolToTextConverter x:Key="RequiredConverter"
@@ -21,7 +23,7 @@
   </ContentPage.Resources>
   <StackLayout>
     <Label Text="Title:" />
-    <Entry Placeholder="Enter the title" Text="{Binding Expense.Title}">
+    <Entry Placeholder="Enter the title" Text="{Binding Expense.Title}" AutomationId="TxtTitle">
       <Entry.Behaviors>
         <behaviors:RequiredBehavior x:Name="TitleValidator"/>
       </Entry.Behaviors>
@@ -31,10 +33,10 @@
            IsVisible="{Binding  Source={x:Reference TitleValidator},Path=IsValid,Converter={StaticResource NegatedBoolConverter}}"/>
 
     <Label Text="Description:" />
-    <Entry Placeholder="Enter the description" Text="{Binding Expense.Description}" />
+    <Entry Placeholder="Enter the description" Text="{Binding Expense.Description}" AutomationId="TxtDescription"/>
 
     <Label Text="Amount:" />
-    <Entry Placeholder="Enter the amount" Text="{Binding Expense.Amount}">
+    <Entry Placeholder="Enter the amount" Text="{Binding Expense.Amount}" AutomationId="TxtAmount">
       <Entry.Behaviors>
         <behaviors:RequiredBehavior x:Name="AmountRequiredValidator"/>
         <behaviors:AmountValidatorBehavior x:Name="AmountValidator"/>
@@ -49,7 +51,18 @@
     <Label Text="{Binding Source={x:Reference AmountRequiredValidator},Path=IsValid,Converter={StaticResource RequiredConverter}}"
            Style="{Binding Source={x:Reference AmountRequiredValidator},Path=IsValid,Converter={StaticResource ValidToStyleConverter}}"/>
     
-    <Button Text="Register" Command="{Binding RegisterCommand}"
+    <Label Text="Frecuency:"/>
+    <controls:BindablePicker ItemsSource="{Binding Frecuencies}" AutomationId="PckFrecuencies"
+                             SelectedItem="{Binding Frecuency}">
+      <controls:BindablePicker.Behaviors>
+        <behaviors:RequiredOptionBehavior x:Name="FrecuencyValidator" />
+      </controls:BindablePicker.Behaviors>
+    </controls:BindablePicker>
+    <Label Text="{Binding Source={x:Reference FrecuencyValidator},Path=IsValid,Converter={StaticResource RequiredConverter}}"
+          Style="{Binding Source={x:Reference FrecuencyValidator},Path=IsValid,Converter={StaticResource ValidToStyleConverter}}"/>
+
+
+    <Button Text="Save Expense" Command="{Binding RegisterCommand}" AutomationId="BtnSave"
             CommandParameter="{Binding Expense}"/>
   </StackLayout>
 </abstract:ViewBase>

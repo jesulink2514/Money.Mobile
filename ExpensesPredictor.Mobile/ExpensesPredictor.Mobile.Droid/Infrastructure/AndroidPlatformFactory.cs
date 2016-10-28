@@ -13,15 +13,21 @@ namespace ExpensesPredictor.Mobile.Droid.Infrastructure
     public class AndroidPlatformFactory : Java.Lang.Object, IPlatformFactory
     {
         public static Lazy<Session> SessionLazy = new Lazy<Session>(CreateSession);
-        public IPlatform GetPlatform()
+        public static Lazy<IPlatform> PlatformLazy = new Lazy<IPlatform>(CreatePlatform);
+        public static IPlatform CreatePlatform()
         {
             return new MarcelloDB.netfx.Platform();
         }
 
+        public IPlatform GetPlatform()
+        {
+            return PlatformLazy.Value;
+        }
+
         public Session GetSession()
         {
-            //return SessionLazy.Value;
-            return CreateSession();
+            return SessionLazy.Value;
+            //return CreateSession();
         }
 
         public static Session CreateSession()

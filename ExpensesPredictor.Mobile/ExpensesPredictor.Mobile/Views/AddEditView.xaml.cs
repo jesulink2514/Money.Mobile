@@ -8,13 +8,13 @@ namespace ExpensesPredictor.Mobile.Views
     {
         public AddEditView(Expense expense)
         {
-            this.BindingContext = new AddEditViewModel(expense);
             InitializeComponent();
+            this.BindingContext = new AddEditViewModel(expense);
         }
         public AddEditView()
         {
-            this.BindingContext = new AddEditViewModel(new Expense());
             InitializeComponent();
+            this.BindingContext = new AddEditViewModel(new Expense());
         }
     }
 }

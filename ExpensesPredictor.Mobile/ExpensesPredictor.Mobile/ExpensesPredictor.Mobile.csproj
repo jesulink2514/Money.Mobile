@@ -41,6 +41,8 @@
     <Compile Include="Behaviors\Abstract\ValidationBehavior.cs" />
     <Compile Include="Behaviors\AmountValidatorBehavior.cs" />
     <Compile Include="Behaviors\RequiredBehavior.cs" />
+    <Compile Include="Behaviors\RequiredOptionBehavior.cs" />
+    <Compile Include="Controls\BindablePicker.cs" />
     <Compile Include="Converters\BoolToStyleConverter.cs" />
     <Compile Include="Converters\BoolToTextConverter.cs" />
     <Compile Include="Converters\NegatedBoolConverter.cs" />
@@ -53,6 +55,7 @@
     <Compile Include="Infrastructure\NoSQL\IExpensesRepository.cs" />
     <Compile Include="Models\BindableBase.cs" />
     <Compile Include="Models\Expense.cs" />
+    <Compile Include="Models\ExpenseFrecuencies.cs" />
     <Compile Include="Models\ExpenseFrecuency.cs" />
     <Compile Include="Models\ValidableBindableBase.cs" />
     <Compile Include="ViewModels\Abstract\ViewModelBase.cs" />

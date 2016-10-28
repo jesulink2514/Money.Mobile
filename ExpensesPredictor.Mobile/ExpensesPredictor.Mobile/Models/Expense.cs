@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ExpensesPredictor.Mobile.Models
 {
@@ -8,6 +10,7 @@ namespace ExpensesPredictor.Mobile.Models
         private string _description;
         private double _amount;
         private ExpenseFrecuency _frecuency;
+        
         public Guid Id { get; set; }
 
         public string Title
@@ -41,8 +44,17 @@ namespace ExpensesPredictor.Mobile.Models
                 if (string.IsNullOrWhiteSpace(Title)) return false;
 
                 if (Amount <= 0) return false;
+
+                if (Frecuency == null) return false;
+
                 return true;
             }
+        }
+
+        public static double CalculateTotalEstimatedForThisMonth(IEnumerable<Expense> expenses)
+        {
+            var total = expenses.Sum(x => x.Amount*x.Frecuency.TimesPerMonth);
+            return total;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace ExpensesPredictor.Mobile.Models
 {
@@ -6,9 +7,10 @@ namespace ExpensesPredictor.Mobile.Models
     {
         public int TimesPerMonth { get; private set; }
 
-        internal ExpenseFrecuency(int timesMonth)
+        [JsonConstructor]
+        public ExpenseFrecuency(int timesPerMonth)
         {
-            TimesPerMonth = timesMonth;
+            TimesPerMonth = timesPerMonth;
         }
 
         public static ExpenseFrecuency Daily { get; } = new ExpenseFrecuency(30);
