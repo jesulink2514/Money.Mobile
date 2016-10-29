@@ -16,12 +16,14 @@ namespace ExpensesPredictor.UITests
                 return ConfigureApp
                     .Android
                     .InstalledApp("expenses.predictor")
+                    .EnableLocalScreenshots()
                     .StartApp(AppDataMode.Clear);
             }
 
             return ConfigureApp
                 .iOS
                 .InstalledApp("ExpensesPredictor")
+                .EnableLocalScreenshots()
                 .StartApp(AppDataMode.Clear);
         }
     }

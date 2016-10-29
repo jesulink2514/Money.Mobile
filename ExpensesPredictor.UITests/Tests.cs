@@ -38,7 +38,7 @@ namespace ExpensesPredictor.UITests
 
             //Check if Save button is enabled
             var isSaveEnabled = app.Query(c => c.Marked("BtnSave")).First().Enabled;
-
+            app.Screenshot("Save button disabled.");
             Assert.False(isSaveEnabled,"Save button should be disabled.");
         }
 
@@ -66,16 +66,46 @@ namespace ExpensesPredictor.UITests
             app.WaitForElement(c => c.Marked("select_dialog_listview"));
             app.Tap(c => c.Marked("select_dialog_listview"));
             //Save Expense
+            app.Screenshot("New Expense Form");
             app.Tap(c => c.Marked("BtnSave"));
 
             //Wait for navigation
             app.WaitForElement(c => c.Marked("LblTotal"));
 
             //Validate refresh
+            app.Screenshot("List and Total calculated");
             var expected = "Total estimated for this month: $396.00";
             var total= app.Query(c => c.Marked("LblTotal")).First().Text;
-            app.Screenshot(" ");
             Assert.AreEqual(expected,total,"MainPage should refresh list and total");
+        }
+
+        [Test]
+        public void RemoveExpense_refresh_list_and_total()
+        {
+            //Register a expense
+            app.Tap(c => c.Marked("NoResourceEntry-0"));
+            app.WaitForElement(c => c.Marked("BtnSave"));
+
+            app.EnterText(c => c.Marked("TxtTitle"), "Title");
+            app.EnterText(c => c.Marked("TxtAmount"), "99");
+            app.Tap(c => c.Marked("PckFrecuencies"));
+            app.Tap(c => c.Marked("select_dialog_listview").Child(2));
+            app.Tap(c => c.Marked("BtnSave"));
+            app.WaitForElement(c => c.Marked("LstExpenses"));
+
+            //Delete
+            app.TouchAndHold(c => c.Marked("LstExpenses").Child());
+            app.Screenshot("Showing context menu");
+            app.Tap(c => c.Marked("NoResourceEntry-1").Index(1));
+            app.Screenshot("Confirm dialog");
+            app.Tap(c => c.Marked("button1"));
+
+            //Assert
+            app.Screenshot("No elements");
+            var totalText = app.Query(c => c.Marked("LblTotal")).First().Text;
+            Assert.True(totalText.EndsWith("$0.00"));
+            var totalList = app.Query(c => c.Marked("LstExpenses").Descendant()).Count();
+            Assert.AreEqual(totalList,0);
         }
 
     }
