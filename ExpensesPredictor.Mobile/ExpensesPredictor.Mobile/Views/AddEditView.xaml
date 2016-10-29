@@ -21,8 +21,8 @@
                                        FalseStyle="{StaticResource ErrorLabelStyle}"/>
     </ResourceDictionary>
   </ContentPage.Resources>
-  <StackLayout>
-    <Label Text="Title:" />
+  <StackLayout Padding="5">
+    <Label Text="Title:" FontSize="Medium"/>
     <Entry Placeholder="Enter the title" Text="{Binding Expense.Title}" AutomationId="TxtTitle">
       <Entry.Behaviors>
         <behaviors:RequiredBehavior x:Name="TitleValidator"/>
@@ -32,10 +32,10 @@
            Style="{Binding Source={x:Reference TitleValidator},Path=IsValid,Converter={StaticResource ValidToStyleConverter}}"
            IsVisible="{Binding  Source={x:Reference TitleValidator},Path=IsValid,Converter={StaticResource NegatedBoolConverter}}"/>
 
-    <Label Text="Description:" />
+    <Label Text="Description:"  FontSize="Medium"/>
     <Entry Placeholder="Enter the description" Text="{Binding Expense.Description}" AutomationId="TxtDescription"/>
 
-    <Label Text="Amount:" />
+    <Label Text="Amount:"  FontSize="Medium"/>
     <Entry Placeholder="Enter the amount" Text="{Binding Expense.Amount}" AutomationId="TxtAmount">
       <Entry.Behaviors>
         <behaviors:RequiredBehavior x:Name="AmountRequiredValidator"/>
@@ -51,7 +51,7 @@
     <Label Text="{Binding Source={x:Reference AmountRequiredValidator},Path=IsValid,Converter={StaticResource RequiredConverter}}"
            Style="{Binding Source={x:Reference AmountRequiredValidator},Path=IsValid,Converter={StaticResource ValidToStyleConverter}}"/>
     
-    <Label Text="Frecuency:"/>
+    <Label Text="Frecuency:" FontSize="Medium"/>
     <controls:BindablePicker ItemsSource="{Binding Frecuencies}" AutomationId="PckFrecuencies"
                              SelectedItem="{Binding Frecuency}">
       <controls:BindablePicker.Behaviors>

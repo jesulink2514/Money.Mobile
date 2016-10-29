@@ -64,11 +64,12 @@
       <Label AutomationId="LblNoExpenses" Text="There is no expenses registered." VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand"
         HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold"/>
     </StackLayout>
-    <StackLayout Grid.Row="2" Padding="5" VerticalOptions="CenterAndExpand" BackgroundColor="#F4F4F4">
+    <StackLayout Grid.Row="2" Padding="5" VerticalOptions="CenterAndExpand" 
+                 BackgroundColor="Teal">
       <Label AutomationId="LblTotal" Text="{Binding TotalEstimatedForThisMonth,StringFormat='Total estimated for this month: {0:c}'}"
              FontSize="Large" FontAttributes="Bold" MinimumHeightRequest="120"
              VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"
-             TextColor="Teal"></Label>
+             TextColor="White" />
     </StackLayout>
 </Grid>
 </abstract:ViewBase>

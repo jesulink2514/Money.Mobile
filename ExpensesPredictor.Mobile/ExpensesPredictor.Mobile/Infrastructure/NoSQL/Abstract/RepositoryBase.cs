@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using MarcelloDB.Collections;
 using Xamarin.Forms;
 
@@ -60,6 +61,7 @@ namespace ExpensesPredictor.Mobile.Infrastructure.NoSQL.Abstract
         public virtual void Add(T entity)
         {
              _collection.Persist(entity);
+            Task.Delay(50).Wait();
         }
 
         public virtual void Update(T entity)
